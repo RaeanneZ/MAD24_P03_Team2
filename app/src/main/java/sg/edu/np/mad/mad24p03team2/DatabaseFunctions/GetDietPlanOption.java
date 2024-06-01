@@ -1,12 +1,14 @@
 package sg.edu.np.mad.mad24p03team2.DatabaseFunctions;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import sg.edu.np.mad.mad24p03team2.Abstract_Interfaces.IDBProcessListener;
 import sg.edu.np.mad.mad24p03team2.AsyncTaskExecutorService.AsyncTaskExecutorService;
+import sg.edu.np.mad.mad24p03team2.SingletonClasses.SingletonDietPlanResult;
 
 public class GetDietPlanOption extends AsyncTaskExecutorService<String, String , String> {
 
@@ -16,7 +18,7 @@ public class GetDietPlanOption extends AsyncTaskExecutorService<String, String ,
     int reccCarbIntake = 0;
     int reccProteinIntake = 0;
     int reccFatsIntake = 0;
-    boolean isTracked = false;
+    String gender = " ";
     DietPlanClass dietPlan;
 
     ArrayList<IDBProcessListener> dbListeners = null;
@@ -41,9 +43,8 @@ public class GetDietPlanOption extends AsyncTaskExecutorService<String, String ,
     }
 
     @Override
-    protected DietPlanClass doInBackground(String name, String trackBloodSugar) {
-
-        ResultSet resultSet = dietPlanOptDB.GetRecord(name, trackBloodSugar);
+    protected String doInBackground(String... strings) {
+        ResultSet resultSet = dietPlanOptDB.GetRecord(name, gender);
 
         try{
             // If there is a result
@@ -53,20 +54,16 @@ public class GetDietPlanOption extends AsyncTaskExecutorService<String, String ,
                 reccCarbIntake = resultSet.getInt("ReccCarbIntake");
                 reccProteinIntake = resultSet.getInt("ReccProteinIntake");
                 reccFatsIntake = resultSet.getInt("ReccFatsIntake");
-                trackBloodSugar =  resultSet.getString("TrackBloodSugar");
+                gender =  resultSet.getString("Gender");
 
-                if (trackBloodSugar.compareTo("T") == 0){
-                    isTracked = true;
-                } else {
-                    isTracked = false;
-                }
-
-                DietPlanClass dietPlan = new DietPlanClass(id, name, reccCarbIntake, reccProteinIntake, reccFatsIntake, isTracked);
+                dietPlan = new DietPlanClass(id, name, reccCarbIntake, reccProteinIntake, reccFatsIntake, gender);
                 isSuccess = true;
             }
-        } catch( Exception e){}
+        } catch(Exception e){ }
 
-        return dietPlan;
+        //return dietPlan;
+        SingletonDietPlanResult.getInstance().setDietPlan(dietPlan);
+        return "";
     }
 
     @Override
@@ -77,16 +74,6 @@ public class GetDietPlanOption extends AsyncTaskExecutorService<String, String ,
     }
 
     // IGNORED -------------------------------------------------------------------------------------
-    @Override
-    protected String doInBackground(String... strings) {
-        return null;
-    }
-
-    @Override
-    protected ArrayList<FoodItemClass> doInBackground() {
-        return null;
-    }
-
     @Override
     protected ArrayList<FoodItemClass> doInBackground(String name) { return null; }
     // IGNORED -------------------------------------------------------------------------------------
