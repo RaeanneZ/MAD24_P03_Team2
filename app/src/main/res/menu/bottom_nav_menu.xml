@@ -7,13 +7,6 @@
         android:id="@+id/logfood"
         android:icon="@drawable/baseline_assignment_24"
         />
-    <item android:title="Fooducate"
-        android:icon="@drawable/baseline_info_outline_24"
-        android:id="@+id/fooducate"/>
-    <item android:title="Food2nom"
-        android:icon="@drawable/baseline_restaurant_menu_24"
-        android:id="@+id/food2nom"
-        />
     <item android:title="Account"
         android:icon="@drawable/baseline_person_24"
         android:id="@+id/account"
