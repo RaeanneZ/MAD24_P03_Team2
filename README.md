@@ -255,7 +255,7 @@ I worked independently to resolve difficulties faced in the course of developmen
 
 
 ## Appendices
-[Stage 1 Figma Prototype](https://www.figma.com/file/pNx3FUUF3zOFvgexIocBwP/MAD-Wireframe?type=design&node-id=0-1&mode=design&t=WX9BKlbXHOVR2sC1-0)
+[Stage 1 Figma Prototype]([https://www.figma.com/file/pNx3FUUF3zOFvgexIocBwP/MAD-Wireframe?type=design&node-id=0-1&mode=design&t=WX9BKlbXHOVR2sC1-0](https://www.figma.com/design/bbhzqmDpylFzYIMlHsy6BY/Untitled?node-id=0-1&t=qKwwhxSDWoxE48rR-0))
 
 [Stage 2 Figma Prototype] *(To be updated)*
 [Stage 2 Features Screenshots] *(To be updated)*
