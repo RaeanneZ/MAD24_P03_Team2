@@ -45,8 +45,10 @@ public class SignupActivity extends AppCompatActivity implements IDBProcessListe
         checkboxBtn = (CheckBox) findViewById(R.id.checkBox);
         signUpBtn = (Button) findViewById(R.id.signUpBtn);
 
+        // Initialize database interaction object
         registerUser = new RegisterUser(getApplicationContext(), this);
 
+        // Set click listener for sign up button
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,9 +56,10 @@ public class SignupActivity extends AppCompatActivity implements IDBProcessListe
                 email = emailComponent.getText().toString();
                 password = pwdComponent.getText().toString();
                 confirm = cfpwdComponent.getText().toString();
+
+                // Input validation
                 if (name.isEmpty() || email.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Please fill in the fields!", Toast.LENGTH_SHORT).show();
-
                 } else if (!password.equals(confirm)) {
                     // Display error message - passwords don't match
                     Toast.makeText(SignupActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
@@ -64,8 +67,12 @@ public class SignupActivity extends AppCompatActivity implements IDBProcessListe
                     Toast.makeText(SignupActivity.this, "Password should not be empty!", Toast.LENGTH_SHORT).show();
 
                 } else {
+                    // Attempt to register user in database
                     registerUser.execute(name, email, password);
                     SingletonSession.getInstance().SignUpAccount(name, email);
+                    // Navigate to ProfileActivity
+                    Intent profileIntent = new Intent(SignupActivity.this, ProfileActivity.class);
+                    startActivity(profileIntent);
                 }
             }
         });
@@ -79,7 +86,7 @@ public class SignupActivity extends AppCompatActivity implements IDBProcessListe
         } else {
             Log.d("Sign Up", "Fail");
         }
-        signUpBtn.setOnClickListener(v -> startActivity(new Intent(SignupActivity.this, ProfileActivity.class)));
+
 
     }
 

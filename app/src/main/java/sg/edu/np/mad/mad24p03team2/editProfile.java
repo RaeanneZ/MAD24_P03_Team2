@@ -99,6 +99,7 @@ public class editProfile extends AppCompatActivity implements IDBProcessListener
             birthdateText.setText(new SimpleDateFormat("yyyy-MM-dd").format(currentUserProfile.getBirthDate()));
             weightText.setText(String.valueOf(currentUserProfile.getWeight()));
             heightText.setText(String.valueOf(currentUserProfile.getHeight()));
+            // Set the gender selection based on the profile
             setGenderSelection(currentUserProfile.getGender());
         } else {
             Toast.makeText(this, "Failed to load profile details", Toast.LENGTH_SHORT).show();
@@ -110,16 +111,19 @@ public class editProfile extends AppCompatActivity implements IDBProcessListener
         ColorStateList femaleDefaultColorStateList = getResources().getColorStateList(R.color.lightpink);
 
         if (gender.equalsIgnoreCase("M")) {
+            // Set background color and icon visibility for male selection
             male.setBackgroundTintList(getResources().getColorStateList(R.color.purple));
             female.setBackgroundTintList(femaleDefaultColorStateList);
             maleIconView.setVisibility(View.VISIBLE);
             femaleIconView.setVisibility(View.GONE);
         } else if (gender.equalsIgnoreCase("F")) {
+            // Set background color and icon visibility for female selection
             male.setBackgroundTintList(maleDefaultColorStateList);
             female.setBackgroundTintList(getResources().getColorStateList(R.color.altpink));
             maleIconView.setVisibility(View.GONE);
             femaleIconView.setVisibility(View.VISIBLE);
         } else {
+            // Set default background colors and hide icons if gender is not set
             male.setBackgroundTintList(maleDefaultColorStateList);
             female.setBackgroundTintList(femaleDefaultColorStateList);
             maleIconView.setVisibility(View.GONE);
@@ -131,6 +135,7 @@ public class editProfile extends AppCompatActivity implements IDBProcessListener
         float weight = Float.parseFloat(weightText.getText().toString());
         float height = Float.parseFloat(heightText.getText().toString());
         String gender;
+        // Determine gender selection based on button background color
         if (male.getBackgroundTintList() == getResources().getColorStateList(R.color.purple)) {
             gender = "M"; // Male
         } else if (female.getBackgroundTintList() == getResources().getColorStateList(R.color.altpink)) {
@@ -140,23 +145,26 @@ public class editProfile extends AppCompatActivity implements IDBProcessListener
             return;
         }
 
+        // Validate birthdate format
         if(!isDateValid(birthdate)){
             Toast.makeText(this, "Please enter Birthdate in YYYY-MM-DD", Toast.LENGTH_SHORT).show();
             return;
         }
 
 
+        // Check if all fields are filled
         if (birthdate.isEmpty() || weightText.getText().toString().isEmpty() || heightText.getText().toString().isEmpty()) {
             Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Call database
+        // Update profile details in database using UpdateUserProfile object
         updateUserProfile.execute(SingletonSession.getInstance().GetAccount().getEmail(), SingletonSession.getInstance().GetAccount().getDietPlanOpt(), gender, birthdate, Float.toString(height), Float.toString(weight));
         Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
     }
 
     private boolean isDateValid(String stringDate){
+        // Function to validate birthdate format
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         sdf.setLenient(false);
 

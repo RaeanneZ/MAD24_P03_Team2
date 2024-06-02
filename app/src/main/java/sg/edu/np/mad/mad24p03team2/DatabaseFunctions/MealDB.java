@@ -34,7 +34,7 @@ public class MealDB extends AbstractDBProcess {
 
     public ResultSet GetRecord(String mealName, int accountID){
         // Get records that are equal to the mealname (eg Breakfast) and is today's record
-        String sql = "SELECT * FROM Meal WHERE MealName = '"+mealName+"' && AccID = '"+accountID+"'";
+        String sql = "SELECT * FROM Meal WHERE MealName = '"+mealName+"' AND AccID = " + accountID;
 
         try {
             stmt = dbCon.createStatement();

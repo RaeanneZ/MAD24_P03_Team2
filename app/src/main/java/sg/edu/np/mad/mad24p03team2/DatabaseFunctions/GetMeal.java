@@ -49,17 +49,25 @@ public class GetMeal extends AsyncTaskExecutorService<String, String , String> {
             mealClass = new MealClass(mealName);
 
             // If there are meals recorded today
-            if(mealResultSet== null || (!mealResultSet.isBeforeFirst() && mealResultSet.getRow() == 0)){
+            if(!mealResultSet.isBeforeFirst() && mealResultSet.getRow() == 0){
                 SingletonTodayMeal.getInstance().AddMeal(mealClass);
                 return "No Records";
             }
             while (mealResultSet.next()) {
                 try{
+                    Log.d("GETMEAL", "THERE'S DATA!");
                     // Get the foodData from Meal data
+
+                    Log.d("GETMEAL","GetREcordBYID = "+mealResultSet.getInt("FoodID"));
                     foodResultSet =  foodDB.GetRecordById(mealResultSet.getInt("FoodID"));
-                    // Change it into an object
-                    foodItem = new FoodItemClass(foodResultSet.getInt("FoodID"), foodResultSet.getString("Name"), foodResultSet.getFloat("Calories"), foodResultSet.getFloat("Carbohydrates"), foodResultSet.getFloat("Protein"), foodResultSet.getFloat("Fats"), foodResultSet.getFloat("ServingSize"));
-                    mealClass.getSelectedFoodList().put(foodItem, mealResultSet.getInt("Quantity"));
+
+                    if (foodResultSet.next()) {
+                        // Change it into an object
+                        // int id, String name, double calories, double serving_size_g, double fat_total_g, double protein_g, double carbohydrates_total_g)
+                        foodItem = new FoodItemClass(foodResultSet.getInt("FoodID"), foodResultSet.getString("Name"), foodResultSet.getDouble("Calories"), foodResultSet.getDouble("ServingSize"), foodResultSet.getDouble("Fats"), foodResultSet.getDouble("Carbohydrates"), foodResultSet.getDouble("Protein"));
+                        mealClass.getSelectedFoodList().put(foodItem, mealResultSet.getInt("Quantity"));
+                    }
+
                 }
                 catch (Exception e) {
                     Log.d("GetMeal: Food", e.getMessage());
@@ -110,3 +118,4 @@ public class GetMeal extends AsyncTaskExecutorService<String, String , String> {
 
     // IGNORE --------------------------------------------------------------------------------------
 }
+
