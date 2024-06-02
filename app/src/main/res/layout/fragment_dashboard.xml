@@ -239,7 +239,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll1">
 
-            <ScrollView
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -1061,7 +1061,7 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </ScrollView>
+            </HorizontalScrollView>
 
         </LinearLayout>
 
