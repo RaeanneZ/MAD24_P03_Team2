@@ -107,7 +107,7 @@
         <Button
             android:id="@+id/button"
             android:layout_width="328dp"
-            android:layout_height="44dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/lavender"
             android:text="Continue"
             android:textColor="@color/black"

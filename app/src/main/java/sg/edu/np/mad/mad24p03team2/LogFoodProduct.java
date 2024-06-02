@@ -19,14 +19,17 @@ public class LogFoodProduct extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_log_food_product, container, false);
+        // Find the button by its ID in the inflated view
         Button button  =view.findViewById(R.id.button2);
+        // Set a click listener on the button to switch fragments when clicked
         button.setOnClickListener(v -> switchFragment());
-        return view;
+        return view;// Return the inflated view
     }
-
+    // Method to switch the current fragment to SearchForFood
     private void switchFragment() {
-        FragmentActivity activity = getActivity();
+        FragmentActivity activity = getActivity();// Get the current activity
         if (activity instanceof MainActivity2) {
+            // Replace the current fragment with the SearchForFood fragment
             ((MainActivity2) activity).replaceFragment(new SearchForFood());
         }
     }
