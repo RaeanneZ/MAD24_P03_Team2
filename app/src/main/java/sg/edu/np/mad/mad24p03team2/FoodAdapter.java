@@ -57,8 +57,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         }
         FoodItemClass item = items.get(position);
         holder.nameView.setText(item.getName());
-        holder.calNumView.setText(String.valueOf(item.getCalories()));
-        holder.servingSizeView.setText(String.valueOf(item.getServing_size_g()));
+        holder.calNumView.setText(String.format("%.2f", item.getCalories()));
+        holder.servingSizeView.setText(String.format("%.2f", item.getServing_size_g()));
     }
 
     @Override
