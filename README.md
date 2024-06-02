@@ -188,7 +188,7 @@ I am responsible in overseeing the project which includes:
 As the UI/UX design lead, I was responsible for the overall product design. 
 I work with my team to brainstorm and ideate on the application features. The team translated the initial discussed requirements via  a low fidelity figma prototype. I refined the design and functionality details as well as the color scheme for the high fidelity prototype to better demonstrate the end-product application. This gives the team a better reference when developing the application.
 
-During the course of development, I regularly meetup with the team members to ensure that their UI stays true to the figma prototype and to offer technical support if they have difficulty.
+During the course of development, I regularly meetup with the team members to ensure that their UI stays true to the figma prototype and to offer Frontend technical support, like, Food Search implementation and others if they have difficulty.
 
 I will also be responsible for the development of application icon and banner.
 
@@ -198,7 +198,7 @@ I am responsible for the design and setup of the database required for the mobil
 
 **Database Developer**
 
-I am responsible for the coding of all functionality that interacts with the database. Adopting OOP, custom Event Listener and MVC software design patterns, the codes are organized in ways such that all database handling is transparent to the Activity classes. I worked closely with the team members to help them understand and ease into the process of integrating to the backend. We also worked together to test and troubleshoot, ensuring the application works as designed.
+I am responsible for the coding of all functionality that interacts with the database. Adopting OOP, custom Event Listener and MVC software design patterns, the codes are organized in ways such that all database handling is transparent to the Activity classes. I worked closely with the team members to help them understand with psuedo codes and ease into the process of integrating to the backend. We also worked together to test and troubleshoot, ensuring the application works as designed.
 
 
 
@@ -214,7 +214,7 @@ I am responsible for the UI development and functionality  of:
 1. Diet Selection Page (currently only feature Diabetic Friendly Diet)
 2. Sugar tracking option page
 3. Display of suggested micronutrients and calories intake based on gender and diet plan
-4. Food Search Page
+4. Food Search Page - Text Input
 
 I was tasked to refine the UI design of the following: Dashboard page, Log Food Product, Add Food Page. Other involvement includes testing and debugging to ensure quality and responsiveness of application.
 
@@ -248,7 +248,6 @@ As a project team member, I participated in all the project discussion and contr
 I am responsible for the frontend UI and functionality development and testing of the following:
 1. Dashboard page
 2. Navigation bar (Componentized)
-3. Food Search Page
 4. Add Food Page
 5. Meal Log Page
 
@@ -257,7 +256,6 @@ I worked independently to resolve difficulties faced in the course of developmen
 
 ## Appendices
 [Stage 1 Figma Prototype](https://www.figma.com/file/pNx3FUUF3zOFvgexIocBwP/MAD-Wireframe?type=design&node-id=0-1&mode=design&t=WX9BKlbXHOVR2sC1-0)
-[Stage 1 Features Screenshots] *(To be updated)*
 
 [Stage 2 Figma Prototype] *(To be updated)*
 [Stage 2 Features Screenshots] *(To be updated)*
