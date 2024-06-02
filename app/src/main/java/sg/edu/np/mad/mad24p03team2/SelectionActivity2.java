@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import sg.edu.np.mad.mad24p03team2.Abstract_Interfaces.IDBProcessListener;
@@ -24,8 +25,17 @@ public class SelectionActivity2 extends AppCompatActivity implements IDBProcessL
 
         RadioButton yes = findViewById(R.id.radioButton);
         RadioButton no = findViewById(R.id.radioButton2);
-
+        ImageView back= findViewById(R.id.imageView2);
         continueButton = findViewById(R.id.button);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelectionActivity2.this,SelectionActivity.class);
+                startActivity(intent);
+            }
+        });
+
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
